@@ -26,7 +26,7 @@ const updateTask = async (req, res) => {
     const { title, description, completed, deadline } = req.body;
     try {
         const task = await Task.findById(req.params.id);
-        if (!task) return res.status(404).json({ message: 'Task not found.'});
+        if (!task) return res.status(404).json({ message: 'Task not found!'});
         task.title = title || task.title;
         task.description = description || task.description;
         task.completed = completed ?? task.completed;
@@ -43,7 +43,7 @@ const updateTask = async (req, res) => {
 const deleteTask = async (req, res) => {
     try {
         const task = await Task.findById(req.params.id);
-        if (!task) return res.status(404).json({ message: 'Task not found.'});
+        if (!task) return res.status(404).json({ message: 'Task not found!'});
 
         await task.remove();
         res.json({ message: 'Task deleted'});
